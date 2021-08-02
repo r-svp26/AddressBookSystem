@@ -48,7 +48,7 @@ namespace AddressBook
             }
         }
         /// <summary>
-        /// This method is used to add a new contact.
+        /// This method is used to add multipl contacts.
         /// </summary>
         /// <param name="addressBookMain"></param>
         public static void AddDetails(AddressBookMain addressBookMain)
