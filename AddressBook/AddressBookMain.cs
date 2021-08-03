@@ -8,9 +8,8 @@ namespace AddressBook
     {
         // constants
         const int LAST_NAME = 1, ADDRESS = 2, CITY = 3, STATE = 4, ZIP = 5, PHONE_NUMBER = 6, EMAIL = 7;
-        
-        private LinkedList<Contact> contactList;
 
+        private LinkedList<Contact> contactList;
         public AddressBookMain()
         {
             this.contactList = new LinkedList<Contact>();
@@ -22,6 +21,9 @@ namespace AddressBook
             this.contactList.AddLast(contactDetails);
         }
 
+        /// <summary>
+        /// display the contact details.
+        /// </summary>
         public void DisplayContact()
         {
             foreach (Contact data in this.contactList)
@@ -29,6 +31,10 @@ namespace AddressBook
                 data.Display();
             }
         }
+        /// <summary>
+        /// update the contact details.
+        /// </summary>
+        /// <param name="name"></param>
         public void EditContact(string name)
         {
             Console.WriteLine("Enter your choice:");
