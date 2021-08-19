@@ -10,12 +10,14 @@ namespace AddressBook
         const int LAST_NAME = 1, ADDRESS = 2, CITY = 3, STATE = 4, ZIP = 5, PHONE_NUMBER = 6, EMAIL = 7;
 
         private List<Contact> contactList;
+        private List<Contact> cityList;
+        private List<Contact> stateList;
         public AddressBookMain()
         {
             this.contactList = new List<Contact>();
         }
         //this method add details to the address book
-        public void AddContactDetails(string firstName, string lastName, string address, string city, string state, long zipCode, long phoneNumber,string email)
+        public void AddContactDetails(string firstName, string lastName, string address, string city, string state, long zipCode, long phoneNumber,string email, Dictionary<string, List<Contact>> stateDictionary, Dictionary<string, List<Contact>> cityDictionary)
         {
             //// finding the data that already has the same first name
             Contact contact = this.contactList.Find(x => x.firstName.Equals(firstName));
@@ -24,6 +26,30 @@ namespace AddressBook
             {
                 Contact contactDetails = new Contact(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
                 this.contactList.Add(contactDetails);
+                if (!cityDictionary.ContainsKey(city))
+                {
+
+                    cityList = new List<Contact>();
+                    cityList.Add(contactDetails);
+                    cityDictionary.Add(city, cityList);
+                }
+                else
+                {
+                    List<Contact> cities = cityDictionary[city];
+                    cities.Add(contactDetails);
+                }
+                if (!stateDictionary.ContainsKey(state))
+                {
+
+                    stateList = new List<Contact>();
+                    stateList.Add(contactDetails);
+                    stateDictionary.Add(state, stateList);
+                }
+                else
+                {
+                    List<Contact> states = stateDictionary[state];
+                    states.Add(contactDetails);
+                }
             }
             //// print person already exists in the address book
             else
@@ -146,6 +172,23 @@ namespace AddressBook
             foreach (var data in list)
             {
                 data.Display();
+            }
+        }
+        /// <summary>
+        /// display the person details by city or state
+        /// </summary>
+        /// <param name="dictinary"></param>
+        public static void PrintList(Dictionary<string, List<Contact>> dictionary)
+        {
+            foreach (var data in dictionary)
+            {
+                Console.WriteLine("Details of person in {0}", data.Key);
+                foreach (var person in data.Value)
+                {
+                    Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", person.firstName, person.lastName, person.address, 
+                                                                   person.city, person.state, person.zipCode, person.phoneNumber, person.email);
+                }
+                Console.WriteLine("-----------------------------");
             }
         }
     }
