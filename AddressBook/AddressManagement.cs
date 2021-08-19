@@ -22,6 +22,7 @@ namespace AddressBook
                 Console.WriteLine("4.Edit Details");
                 Console.WriteLine("5.Delete Contact");
                 Console.WriteLine("6.Delete the address book");
+                Console.WriteLine("7.Display person by city or state name");
                 Console.WriteLine("0.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -55,6 +56,9 @@ namespace AddressBook
                         string addressBook = Console.ReadLine();
                         addressDictionary.Remove(addressBook);
                         break;
+                    case 7:
+                        AddressBookMain.DisplayPerson(addressDictionary);
+                        break;
                     case 0:
                         CONTINUE = false;
                         Console.WriteLine("Thank you for using Address Book System!");
@@ -86,7 +90,7 @@ namespace AddressBook
             long phoneNumber = Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Enter Email");
             string email = Console.ReadLine();
-            addressBookMain.AddContactDetails(firstName, lastName, address, city, state, zipCode, phoneNumber,email);
+            addressBookMain.AddContactDetails(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
         }
         /// <summary>
         /// method to find the address of particular address book.

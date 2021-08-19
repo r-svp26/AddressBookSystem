@@ -38,7 +38,8 @@ namespace AddressBook
             Console.WriteLine("City: {0}", this.city);
             Console.WriteLine("State:{0}", this.state);
             Console.WriteLine("Zipcode:{0}", this.zipCode);
-            Console.WriteLine("phone number:{0}", this.phoneNumber);
+            Console.WriteLine("Phone number:{0}", this.phoneNumber);
+            Console.WriteLine("Email ID:{0}", this.email);
         }
     }
 }
