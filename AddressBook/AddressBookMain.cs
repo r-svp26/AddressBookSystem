@@ -9,18 +9,28 @@ namespace AddressBook
         // constants
         const int LAST_NAME = 1, ADDRESS = 2, CITY = 3, STATE = 4, ZIP = 5, PHONE_NUMBER = 6, EMAIL = 7;
 
-        private LinkedList<Contact> contactList;
+        private List<Contact> contactList;
         public AddressBookMain()
         {
-            this.contactList = new LinkedList<Contact>();
+            this.contactList = new List<Contact>();
         }
         //this method add details to the address book
         public void AddContactDetails(string firstName, string lastName, string address, string city, string state, long zipCode, long phoneNumber,string email)
         {
-            Contact contactDetails = new Contact(firstName, lastName, address, city, state, zipCode, phoneNumber,email);
-            this.contactList.AddLast(contactDetails);
+            //// finding the data that already has the same first name
+            Contact contact = this.contactList.Find(x => x.firstName.Equals(firstName));
+            //// if same name is not present then add into address book
+            if (contact == null)
+            {
+                Contact contactDetails = new Contact(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
+                this.contactList.Add(contactDetails);
+            }
+            //// print person already exists in the address book
+            else
+            {
+                Console.WriteLine("Person, {0} is already exist in the address book", firstName);
+            }
         }
-
         /// <summary>
         /// display the contact details.
         /// </summary>
