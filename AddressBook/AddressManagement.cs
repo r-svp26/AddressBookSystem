@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AddressBook
@@ -30,6 +31,7 @@ namespace AddressBook
                 Console.WriteLine("7.Display person by city or state name");
                 Console.WriteLine("8.View person by city or state");
                 Console.WriteLine("9.Count person by city or state");
+                Console.WriteLine("10.Sort the Address book");
                 Console.WriteLine("0.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -75,6 +77,13 @@ namespace AddressBook
                         AddressBookMain.CountPerson(cityDictionary);
                         Console.WriteLine("State");
                         AddressBookMain.CountPerson(stateDictionary);
+                        break;
+                    case 10:
+                        Console.WriteLine("AddressBook after sorting");
+                        foreach (var data in addressDictionary.OrderBy(x => x.Key))
+                        {
+                            Console.WriteLine("{0}", data.Key);
+                        }
                         break;
                     case 0:
                         CONTINUE = false;
