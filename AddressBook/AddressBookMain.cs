@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AddressBook
@@ -17,7 +18,7 @@ namespace AddressBook
             this.contactList = new List<Contact>();
         }
         //this method add details to the address book
-        public void AddContactDetails(string firstName, string lastName, string address, string city, string state, long zipCode, long phoneNumber,string email, Dictionary<string, List<Contact>> stateDictionary, Dictionary<string, List<Contact>> cityDictionary)
+        public void AddContactDetails(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNumber,string email, Dictionary<string, List<Contact>> stateDictionary, Dictionary<string, List<Contact>> cityDictionary)
         {
             //// finding the data that already has the same first name
             Contact contact = this.contactList.Find(x => x.firstName.Equals(firstName));
@@ -106,11 +107,11 @@ namespace AddressBook
                             Console.WriteLine("Data updated successfully");
                             break;
                         case ZIP:
-                            data.zipCode = Convert.ToInt64(Console.ReadLine());
+                            data.zipCode = Console.ReadLine();
                             Console.WriteLine("Data updated successfully");
                             break;
                         case PHONE_NUMBER:
-                            data.phoneNumber = Convert.ToInt64(Console.ReadLine());
+                            data.phoneNumber = Console.ReadLine();
                             Console.WriteLine("Data updated successfully");
                             break;
                         case EMAIL:
@@ -200,6 +201,40 @@ namespace AddressBook
             foreach (var person in dictionary)
             {
                 Console.WriteLine("Number of person {0}:", person.Value.Count);
+            }
+        }
+
+        public static void SortData(Dictionary<string, List<Contact>> dictionary)
+        {
+            //store the result inthe list and display the result
+            List<Contact> list = new List<Contact>();
+            foreach (var data in dictionary)
+            {
+                foreach (var item in data.Value)
+                {
+                    list.Add(item);
+                }
+            }
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("\nDisplaying the list based on zipcode");
+            //display the sorted value based on city
+            foreach (var item in list.OrderBy(detail => detail.zipCode))
+            {
+                item.Display();
+            }
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("\nDisplaying the list based on state");
+            //display the sorted value based on city
+            foreach (var item in list.OrderBy(detail => detail.state))
+            {
+                item.Display();
+            }
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("\nDisplaying the list based on city");
+            //display the sorted value based on city
+            foreach (var item in list.OrderBy(detail => detail.city))
+            {
+                item.Display();
             }
         }
     }

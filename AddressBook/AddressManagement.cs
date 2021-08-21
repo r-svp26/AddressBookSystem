@@ -7,8 +7,8 @@ namespace AddressBook
 {
     class AddressManagement
     {
-        static AddressBookMain addressBookMain = new AddressBookMain();
-        static Dictionary<string, AddressBookMain> addressDictionary = new Dictionary<string, AddressBookMain>();
+       
+        static Dictionary<string, AddressBookMain> addressDictionary = new Dictionary<string, AddressBookMain>(); 
         static Dictionary<string, List<Contact>> cityDictionary = new Dictionary<string, List<Contact>>();
         static Dictionary<string, List<Contact>> stateDictionary = new Dictionary<string, List<Contact>>();
         /// <summary>
@@ -16,6 +16,7 @@ namespace AddressBook
         /// </summary>
         public static void ReadInput()
         {
+            AddressBookMain addressBookMain;
             // variables
             bool CONTINUE = true;
             //// the loop continues until the user exit.
@@ -32,6 +33,7 @@ namespace AddressBook
                 Console.WriteLine("8.View person by city or state");
                 Console.WriteLine("9.Count person by city or state");
                 Console.WriteLine("10.Sort the Address book");
+                Console.WriteLine("11.Sort by state city or zip");
                 Console.WriteLine("0.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -85,6 +87,10 @@ namespace AddressBook
                             Console.WriteLine("{0}", data.Key);
                         }
                         break;
+                    case 11:
+                        //displaying the sorted records based on city,state,zipcode
+                        AddressBookMain.SortData(cityDictionary);
+                        break;
                     case 0:
                         CONTINUE = false;
                         Console.WriteLine("Thank you for using Address Book System!");
@@ -111,9 +117,9 @@ namespace AddressBook
             Console.WriteLine("Enter State");
             string state = Console.ReadLine();
             Console.WriteLine("Enter Zipcode");
-            long zipCode = Convert.ToInt64(Console.ReadLine());
+            string zipCode = Console.ReadLine();
             Console.WriteLine("Enter Phone Number");
-            long phoneNumber = Convert.ToInt64(Console.ReadLine());
+            string phoneNumber = Console.ReadLine();
             Console.WriteLine("Enter Email");
             string email = Console.ReadLine();
             addressBookMain.AddContactDetails(firstName, lastName, address, city, state, zipCode, phoneNumber, email, cityDictionary, stateDictionary);
