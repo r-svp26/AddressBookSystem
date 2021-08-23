@@ -18,7 +18,7 @@ namespace AddressBook
             this.contactList = new List<Contact>();
         }
         //this method add details to the address book
-        public void AddContactDetails(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNumber,string email, Dictionary<string, List<Contact>> stateDictionary, Dictionary<string, List<Contact>> cityDictionary)
+        public void AddContactDetails(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNumber, string email, Dictionary<string, List<Contact>> stateDictionary, Dictionary<string, List<Contact>> cityDictionary)
         {
             //// finding the data that already has the same first name
             Contact contact = this.contactList.Find(x => x.firstName.Equals(firstName));
@@ -186,7 +186,7 @@ namespace AddressBook
                 Console.WriteLine("Details of person in {0}", data.Key);
                 foreach (var person in data.Value)
                 {
-                    Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", person.firstName, person.lastName, person.address, 
+                    Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", person.firstName, person.lastName, person.address,
                                                                    person.city, person.state, person.zipCode, person.phoneNumber, person.email);
                 }
                 Console.WriteLine("-----------------------------");

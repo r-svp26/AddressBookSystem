@@ -1,0 +1,8 @@
+First Name:Ritesh
+Last Name:Kumar
+Address:Khaspur
+City: Patna
+State:Bihar
+Zipcode:801502
+Phone number:9907296689
+Email ID:riteshk6341@gmail.com

@@ -7,10 +7,11 @@ namespace AddressBook
 {
     class AddressManagement
     {
-       
-        static Dictionary<string, AddressBookMain> addressDictionary = new Dictionary<string, AddressBookMain>(); 
+        static string filepath = @"V:\BridgeLabz\AddressBookSystem\AddressBook\data.txt";
+        static Dictionary<string, AddressBookMain> addressDictionary = new Dictionary<string, AddressBookMain>();
         static Dictionary<string, List<Contact>> cityDictionary = new Dictionary<string, List<Contact>>();
         static Dictionary<string, List<Contact>> stateDictionary = new Dictionary<string, List<Contact>>();
+        static Dictionary<string, List<Contact>> contactList = new Dictionary<string, List<Contact>>();
         /// <summary>
         /// display the menu to user
         /// </summary>
@@ -34,6 +35,7 @@ namespace AddressBook
                 Console.WriteLine("9.Count person by city or state");
                 Console.WriteLine("10.Sort the Address book");
                 Console.WriteLine("11.Sort by state city or zip");
+                Console.WriteLine("12.Write and Read the Person detail using File IO");
                 Console.WriteLine("0.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -88,8 +90,11 @@ namespace AddressBook
                         }
                         break;
                     case 11:
-                        //displaying the sorted records based on city,state,zipcode
                         AddressBookMain.SortData(cityDictionary);
+                        break;
+                    case 12:
+                        FileOperation.WriteInTextFile(contactList,filepath);
+                        FileOperation.ReadFromTextFile(filepath);
                         break;
                     case 0:
                         CONTINUE = false;
