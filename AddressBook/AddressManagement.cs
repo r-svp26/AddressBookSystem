@@ -8,6 +8,7 @@ namespace AddressBook
     class AddressManagement
     {
         static string filepath = @"V:\BridgeLabz\AddressBookSystem\AddressBook\data.txt";
+        //static string csvFile = "/BridgeLabz/AddressBookSystem/AddressBook/contact.csv";
         static Dictionary<string, AddressBookMain> addressDictionary = new Dictionary<string, AddressBookMain>();
         static Dictionary<string, List<Contact>> cityDictionary = new Dictionary<string, List<Contact>>();
         static Dictionary<string, List<Contact>> stateDictionary = new Dictionary<string, List<Contact>>();
@@ -36,6 +37,7 @@ namespace AddressBook
                 Console.WriteLine("10.Sort the Address book");
                 Console.WriteLine("11.Sort by state city or zip");
                 Console.WriteLine("12.Write and Read the Person detail using File IO");
+                Console.WriteLine("13.Write and Read the Person detail using using CSV file");
                 Console.WriteLine("0.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -95,6 +97,9 @@ namespace AddressBook
                     case 12:
                         FileOperation.WriteInTextFile(contactList,filepath);
                         FileOperation.ReadFromTextFile(filepath);
+                        break;
+                    case 13:
+                        CSVHandler.ImplementCSVDataHandling();
                         break;
                     case 0:
                         CONTINUE = false;

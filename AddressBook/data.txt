@@ -1,5 +1,5 @@
-First Name:Ritesh
-Last Name:Kumar
+FirstName:Ritesh
+LastName:Kumar
 Address:Khaspur
 City: Patna
 State:Bihar
